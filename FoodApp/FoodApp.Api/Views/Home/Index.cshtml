@@ -1,0 +1,129 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-sm-4">
+        <h3>Invoke API</h3>
+        <div style="float:left">
+            <input type="text" id="api" />
+        </div>
+        <div style="float:right">
+            <select id="selectMethod">
+                <option value="POST">POST</option>
+                <option value="GET">GET</option>
+            </select>
+        </div>
+        <div class="form-group" style="clear:both">
+            <button onclick="callApi()" class="btn btn-default">Call API</button>
+        </div>
+            <textarea style="min-height:50%;width:100%" id="result"></textarea>
+    </div>
+    <div class="col-sm-4">
+        <h3>Register</h3>
+        <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" type="text" id="registerEmail" />
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input class="form-control" type="password" id="registerPassword" />
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input class="form-control" type="password" id="registerPassword2" />
+        </div>
+        <div class="form-group">
+            <button onclick="register()" class="btn btn-default">Register</button>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <h3>Log In</h3>
+        <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" type="text" id="loginEmail" />
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input class="form-control" type="password" id="loginPassword" />
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="login()" class="btn btn-default">Log In</button>
+            <button onclick="logout()" class="btn btn-default">Log Out</button>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var tokenKey = 'accessToken';
+    var access_token = "";
+    callApi = function () {
+
+        var headers = {};
+        if (access_token) {
+            headers.Authorization = 'Bearer ' + access_token;
+        }
+        var api = $('#api').val();
+        var method = $('#selectMethod option:selected').val()
+        $.ajax({
+            type: method,
+            url: api,
+            headers: headers
+        }).done(function (data) {
+            $('#result').val(JSON.stringify(data));
+        }).fail(function (data) {
+            $('#result').val(JSON.stringify(data));
+        });
+    }
+
+    register = function () {
+
+        var data = {
+            Email: $('#registerEmail').val(),
+            Password: $('#registerPassword').val(),
+            FirstName: 'Sharaf',
+            LastName: 'KK',
+            MobileNo: '1234',
+            Role:1,
+            ConfirmPassword: $('#registerPassword2').val()
+
+
+        };
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/Account/Register',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function (data) {
+            $('#result').val(JSON.stringify(data));
+        }).fail(function (data) {
+            $('#result').val(JSON.stringify(data));
+        });
+    }
+
+    login = function () {
+        var loginData = {
+            grant_type: 'password',
+            username: $('#loginEmail').val(),
+            password: $('#loginPassword').val()
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/Account/Login',
+            data: loginData
+        }).done(function (data) {
+            access_token = data.access_token;
+            $('#result').val(JSON.stringify(data));
+        }).fail(function (data) {
+            $('#result').val(JSON.stringify(data));
+        });
+    }
+
+    logout = function () {
+        access_token = "";
+    }
+
+</script>

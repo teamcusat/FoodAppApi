@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="FoodAppApi" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Sharafu\\documents\\visual\ studio\ 2013\\Projects\\Solution1\\FoodApp\.Api\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Sharafu\\documents\\visual\ studio\ 2013\\Projects\\Solution1\\FoodApp\.Api\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=tcp:h8hee7ff7g.database.windows.net,1433;Initial Catalog=FoodApp;User ID=jithindraj@h8hee7ff7g;Password=Teamcusat_123" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Sharafu\\documents\\visual\ studio\ 2013\\Projects\\Solution1\\FoodApp\.Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>
