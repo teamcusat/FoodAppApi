@@ -134,8 +134,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountRepository.cs" />
     <Compile Include="BootStrapper.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="IdentityHelper.cs" />
     <Compile Include="IIdentityHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
