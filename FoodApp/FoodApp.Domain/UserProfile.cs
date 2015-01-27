@@ -4,6 +4,86 @@ namespace FoodApp.Domain
     public class UserProfile
     {
         /// <summary>
+        /// UserId
+        /// </summary>
+        public int UserId { get; set; }
+
+        /// <summary>
+        /// UserName
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// FirstName
+        /// </summary>
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// LastName
+        /// </summary>
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// user MobileNumber
+        /// </summary>
+        public string MobileNo { get; set; }
+
+        /// <summary>
+        /// Latitude
+        /// </summary>
+        public double Latitude { get; set; }
+
+        /// <summary>
+        /// Longitude
+        /// </summary>
+        public double Longitude { get; set; }
+
+        /// <summary>
+        /// DisplayName
+        /// </summary>
+        public string DisplayName
+        {
+            get
+            {
+                return string.IsNullOrEmpty(FullName) ? Email.Substring(0, Email.IndexOf('@')) : FullName;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return UserName;
+            }
+        }
+
+        /// <summary>
+        /// Full Name
+        /// </summary>
+        public string FullName
+        {
+            get
+            {
+                string name = "";
+                if (!string.IsNullOrEmpty(FirstName))
+                {
+                    name += FirstName + " ";
+                }
+                if (!string.IsNullOrEmpty(LastName))
+                {
+                    name += LastName;
+                }
+                return name;
+            }
+        }
+    }
+
+    /// <summary>
+    /// The user
+    /// </summary>
+    public class User
+    {
+        /// <summary>
         /// Mobile Verificationnumber
         /// </summary>
         public int VerificationNumber { get; set; }
@@ -31,7 +111,7 @@ namespace FoodApp.Domain
         /// <summary>
         /// Role
         /// </summary>
-        public Role Role { get; set; }
+        public Role RoleId { get; set; }
 
         /// <summary>
         /// user MobileNumber
@@ -116,5 +196,11 @@ namespace FoodApp.Domain
         /// Is mobile verified
         /// </summary>
         public bool IsVerified { get; set; }
+
+        /// <summary>
+        /// Is mobile verified
+        /// </summary>
+        public bool IsRequestedForPromotion { get; set; }
+
     }
 }

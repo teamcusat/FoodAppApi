@@ -34,13 +34,9 @@ namespace FoodApp.Domain
         /// <summary>
         /// MobileNo
         /// </summary>
+        [Required]
         public string MobileNo { get; set; }
 
-        /// <summary>
-        /// User Role
-        /// </summary>
-        public Role Role { get; set; }
-        
         /// <summary>
         /// Latitude
         /// </summary>

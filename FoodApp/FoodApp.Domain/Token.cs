@@ -8,8 +8,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace FoodApp.Domain
 {
+    using System;
     using System.Security.Cryptography;
-    using System.Web;
 
     /// <summary>
     ///     The token.
@@ -31,8 +31,7 @@ namespace FoodApp.Domain
                 // TO DO. Hash a string with the token.
                 var tokenBytes = new byte[16]; // 16 bytes token
                 prng.GetBytes(tokenBytes);
-//                return HttpServerUtility.UrlTokenEncode(tokenBytes);
-                return tokenBytes.ToString();
+                return Convert.ToBase64String(tokenBytes);
             }
         }
 
