@@ -1,0 +1,5 @@
+﻿@media (min-width: 768px) {
+    #main-menu-toggle { display: none !important; }
+
+    #main-navbar .navbar-header { padding-left: 0 !important; }
+}

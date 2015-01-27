@@ -1,0 +1,133 @@
+﻿@model IList<FoodApp.Domain.ApiFoodModel>
+@using FoodApp.Domain
+@{
+    ViewBag.Title = "Food";
+}
+@{
+    int Count = 0;
+}
+<h2 class="table-header">Foods</h2>
+@if (Model.Count > 0)
+{
+
+    @*<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    SL No
+                </th>
+                <th>
+                    ItemName
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Location Details
+                </th>
+                <th>
+                    Cook Details
+                </th>
+            </tr>*@
+    foreach (ApiFoodModel food in Model)
+    {
+        <div class="panel panel-default col-md-6">
+            <div class="panel-heading">
+                <h4 class="header">@food.ItemName</h4>
+                <div class="col-md-6 pull-left">Quantity : @food.Quantity</div>
+                <div class="col-md-6 pull-right">Price : @food.Price.ToString("0.##")</div>
+                <div class="clr"></div>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-6 pull-left">
+                    <h5 class="header">Address</h5>
+                    <br/>
+                    @food.HomeAddress
+                    <br/>
+                    @food.Landmark
+                    <br/>
+                    @food.Location
+                    <br/>
+                    Geo-point : (@(food.Latitude.ToString("0.##")+","+food.Longitude.ToString("0.##")))
+                </div>
+                <div class="col-md-6 pull-right">
+                    <h5 class="header">Cook</h5>
+                    <br/>
+                    @food.Cook.DisplayName
+                    <br/>
+                    @food.Cook.MobileNo
+                    <br/>
+                    @food.Cook.Email
+                </div>
+            </div>
+        </div>
+        @*<tr>
+                <td>
+                    @{
+            Count++;
+                    }
+                    @Count
+                </td>
+                <td>
+                    @food.ItemName
+                </td>
+                <td>
+                    @food.Price
+                </td>
+                <td>
+                    @food.Quantity
+                </td>
+                <td>
+                    <p>
+                        Home : @food.HomeAddress
+                    </p>
+                    <p>
+                        Landmark : @food.Landmark
+                    </p>
+                    <p>
+                        Location : @food.Location
+                    </p>
+                    <p>
+                        Latitude : @(food.Latitude.ToString("0.##"))
+                    </p>
+                    <p>
+                        Longitude : @(food.Longitude.ToString("0.##"))
+                    </p>
+                </td>
+                <td>
+                    @if (food.Cook != null)
+                    {
+                        var cook = food.Cook;
+                        <p>
+                            Full Name : @cook.FullName
+                        </p>
+                        <p>
+                            MobileNo : @cook.MobileNo
+                        </p>
+                        <p>
+                            Email : @cook.Email
+                        </p>
+                    }
+                </td>
+            </tr>*@
+    }
+    @*</thead>
+        </table>*@
+}
+else
+{
+    <p>
+        No Food Available
+    </p>
+}
+
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+    </script>
+}

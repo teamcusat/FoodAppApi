@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>@RenderSection("title", false)</title>
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @Styles.Render("~/Content/PixelAdmin")
+    @RenderSection("style", false)
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Gridmvc.css" rel="stylesheet" />
+
+</head>
+<body class="theme-default main-menu-animated main-navbar-fixed main-menu-fixed">
+    <script> var init = []; </script>
+    <div id="main-wrapper">
+            @RenderBody()
+    </div><!-- / #main-wrapper -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/pixeladmin")
+
+    @Scripts.Render("~/bundles/StartPixelAdmin")
+
+    @RenderSection("scripts", false)
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿@model IList<FoodApp.Domain.FoodItem>
+@{
+    ViewBag.Title = "Items";
+}
+
+<h2>Items</h2>
+<div>
+    @using (Html.BeginForm("Add", "Items"))
+    {
+        <input type="text" id="itemName" name="itemname" />
+        <input type="submit" value="Add Item" />
+    }
+</div>
+@if (Model.Count > 0)
+{
+    foreach (var item in Model)
+    {
+        <div class="panel-heading col-md-3">
+            <h3>@item.Name</h3>
+        </div>
+    }
+}

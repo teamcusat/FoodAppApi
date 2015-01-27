@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>@RenderSection("title", false)</title>
+
+    @Styles.Render("~/Content/PixelAdmin")
+    @RenderSection("style", false)
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Gridmvc.css" rel="stylesheet" />
+</head>
+<body class="theme-default main-menu-animated main-navbar-fixed main-menu-fixed">
+    <script> var init = []; </script>
+    <div id="main-wrapper">
+
+        @Html.Partial("_Header")
+        @Html.Partial("_LeftPanel")
+        <div id="content-wrapper">
+            <!-- Common Info/Alert message -->
+            <div id="alertBox" class="alert alert-error posab ShowAlert " style="display: none;"><button type="button" class="close" data-dismiss="alert">×</button></div>
+            <div id="infoBox" class="alert alert-info posab ShowInfo" style="display: none;"><button type="button" class="close" data-dismiss="alert">×</button></div>
+            <div id="successBox" class="alert alert-success posab ShowSuccessinfo" style="display: none;"><button type="button" class="close" data-dismiss="alert">×</button></div>
+            @RenderBody()
+        </div><!-- / #content-wrapper -->
+        <div id="main-menu-bg"></div>
+    </div><!-- / #main-wrapper -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/pixeladmin")
+
+    @Scripts.Render("~/bundles/StartPixelAdmin")
+
+    @RenderSection("scripts", false)
+
+</body>
+</html>

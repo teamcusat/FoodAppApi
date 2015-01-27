@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/_PlainLayout.cshtml";
+}
+
+@section title
+{
+    Login
+}
+<h1 class="form-header">Login</h1>
+@using (Html.BeginForm("Login", "Account", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "panel", Id = "LoginForm", autocomplete = "off" }))
+{
+    <span class="error-text" id="Error">
+    </span>
+    <div class="form-group w-icon">
+        <input class="form-control input-lg" type="text" name="Username" id="username" placeholder="Username*" />
+    </div>
+    <!-- / Username -->
+
+    <div class="form-group w-icon">
+        <input class="form-control input-lg" type="password" name="password" id="password" placeholder="Password*">
+    </div>
+    <!-- / Password -->
+
+    <div class="form-actions">
+        <input type="submit" onclick="return Login()" class="btn btn-primary" data-loading-text="Loading..." value="Log in" id="btnSubmit" />
+    </div>
+    <!-- / .form-actions -->
+}
+@section Scripts{
+    <script type="text/javascript">
+        $('#Error').html('@ViewBag.Error');
+        Login=function () {
+            var username = $('#username').val().trim();
+            var password = $('#password').val().trim();
+            if(username=='')
+            {
+                $('#Error').html('Username is required');
+                return false;
+            }
+            else if(password=='')
+            {
+                $('#Error').html('Password is required');
+                return false;
+            }
+        }
+    </script>
+}

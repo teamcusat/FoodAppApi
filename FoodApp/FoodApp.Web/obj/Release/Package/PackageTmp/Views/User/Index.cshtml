@@ -1,0 +1,84 @@
+﻿@model IList<FoodApp.Domain.User>
+@using FoodApp.Domain
+@{
+    int Count = 0;
+}
+<h2 class="table-header">Users</h2>
+@if (Model.Count > 0)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    SL No
+                </th>
+                <th>
+                    UserName
+                </th>
+                <th>
+                    FirstName
+                </th>
+                <th>
+                    LastName
+                </th>
+                <th>
+                    Mobile No
+                </th>
+                <th>
+                    Role
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+            @foreach (User user in Model)
+            {
+                <tr>
+                    <td>
+                        @{
+                Count++;
+                        }
+                        @Count
+                    </td>
+                    <td>
+                        @user.UserName
+                    </td>
+                    <td>
+                        @user.FirstName
+                    </td>
+                    <td>
+                        @user.LastName
+                    </td>
+                    <td>
+                        @user.MobileNo
+                    </td>
+                    <td>
+                        @user.RoleId.ToString()
+                    </td>
+                    <td>
+                        @*                    <button onclick="Delete('@user.UserName')">Delete</button>*@
+                        @if (user.RoleId == Role.User)
+                        {
+                            <button onclick="promote('@user.UserName')">Promote as Cook</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </thead>
+    </table>
+}
+else
+{
+    <p>No users yet!!</p>
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        promote = function (userName) {
+            window.location.href = "/user/promote?UserName=" + userName;
+        }
+        //Delete = function (userName) {
+        //    window.location.href = "/user/delete?UserName=" + userName;
+        //}
+    </script>
+}
