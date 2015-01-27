@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Saic.Web.UI.WebControls</id>
+    <version>1.0.0.0</version>
+    <title>Saic.Web.UI.WebControls</title>
+    <authors>DHHS\HRSA\OIT</authors>
+    <owners>DHHS\HRSA\OIT</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SAIC Custom Composite Controls</description>
+    <releaseNotes>Initial Release 1.0</releaseNotes>
+    <copyright>Copyright 2012</copyright>
+    <tags>Custom Controls Composite Controls</tags>
+  </metadata>
+</package>
