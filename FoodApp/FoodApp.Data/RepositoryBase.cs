@@ -16,7 +16,7 @@ namespace FoodApp.Data
         {
             get
             {
-                return "Data Source=tcp:h8hee7ff7g.database.windows.net,1433;Initial Catalog=FoodApp;User Id=jithindraj@h8hee7ff7g;Password=Teamcusat_123";//ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                return ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             }
         }
 

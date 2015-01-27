@@ -152,6 +152,10 @@
   <ItemGroup>
     <Compile Include="Account\AccountRepository.cs" />
     <Compile Include="Account\IAccountRepository.cs" />
+    <Compile Include="Cart\CartRepository.cs" />
+    <Compile Include="Cart\ICartRepository.cs" />
+    <Compile Include="Dashboard\DashboardRepository.cs" />
+    <Compile Include="Dashboard\IDashboardRepository.cs" />
     <Compile Include="Food\FoodRepository.cs" />
     <Compile Include="Food\IFoodRepository.cs" />
     <Compile Include="User\IUserRepository.cs" />
