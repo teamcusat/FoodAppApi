@@ -148,6 +148,8 @@
   <ItemGroup>
     <Compile Include="Account\AccountService.cs" />
     <Compile Include="Account\IAccountService.cs" />
+    <Compile Include="Cart\CartService.cs" />
+    <Compile Include="Cart\ICartService.cs" />
     <Compile Include="Food\FoodService.cs" />
     <Compile Include="Food\IFoodService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
