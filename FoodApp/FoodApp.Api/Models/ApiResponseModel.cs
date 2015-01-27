@@ -9,7 +9,7 @@
 namespace FoodApp.Api.Models
 {
     using FoodApp.Domain;
-using System.Collections.Generic;
+    using System.Collections.Generic;
 
     #region  response models
 
@@ -30,15 +30,59 @@ using System.Collections.Generic;
     }
 
     /// <summary>
+    /// The cart response
+    /// </summary>
+    public class CartResponse : DefaultResponse
+    {
+        /// <summary>
+        /// the cart items
+        /// </summary>
+        public IList<CartItem> Items { get; set; }
+
+        /// <summary>
+        /// the total amount
+        /// </summary>
+        public double Total { get; set; }
+    }
+
+    /// <summary>
     /// The Items
     /// </summary>
-    public class ItemsResponseModel :DefaultResponse
+    public class ItemsResponseModel : DefaultResponse
     {
         /// <summary>
         /// The Items
         /// </summary>
         public IList<FoodItem> Items { get; set; }
     }
-    
+
+    /// <summary>
+    /// ItemResponse Mode
+    /// </summary>
+    public class ItemResponseModel : DefaultResponse
+    {
+
+        /// <summary>
+        /// ItemId
+        /// </summary>
+        public int ItemId { get; set; }
+
+        /// <summary>
+        /// Item Name
+        /// </summary>
+        public string ItemName { get; set; }
+    }
+
+    /// <summary>
+    /// The food response
+    /// </summary>
+    public class FoodResponseModel : DefaultResponse
+    {
+        /// <summary>
+        /// The Food List
+        /// </summary>
+        public IList<ApiFoodModel> Foods { get; set; }
+    }
+
     #endregion
 }

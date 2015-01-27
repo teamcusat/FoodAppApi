@@ -18,7 +18,7 @@
         /// <summary>
         ///     The not found.
         /// </summary>
-        NotFound = 1002,
+        UnAuthenticated = 1002,
 
         /// <summary>
         ///     The internal server error.

@@ -4,8 +4,11 @@
 <div class="row">
     <div class="col-sm-4">
         <h3>Invoke API</h3>
-        <div style="float:left">
+        <div>
             <input type="text" id="api" />
+        </div>
+        <div>
+            <input type="text" id="data" />
         </div>
         <div style="float:right">
             <select id="selectMethod">
@@ -64,9 +67,11 @@
             headers.Authorization = 'Bearer ' + access_token;
         }
         var api = $('#api').val();
+        var dat = $('#data').val();
         var method = $('#selectMethod option:selected').val()
         $.ajax({
             type: method,
+            data:dat,
             url: api,
             headers: headers
         }).done(function (data) {

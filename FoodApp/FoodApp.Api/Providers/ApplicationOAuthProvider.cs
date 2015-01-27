@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using FoodApp.Api.Models;
 using FoodApp.Domain;
-using System.Web.Helpers;
-using FoodApp.Api.Identity;
+using FoodApp.Api.Helpers;
 
 namespace FoodApp.Api.Providers
 {
@@ -105,9 +102,12 @@ namespace FoodApp.Api.Providers
 
         public static AuthenticationProperties CreateProperties(string userName)
         {
+            User user = Helper.GetUser(userName);
             IDictionary<string, string> data = new Dictionary<string, string>
             {
-                { "userName", userName }
+                { "userName", userName },
+                {"Role",(user!=null)?user.RoleId.ToString():Role.User.ToString()},
+                {"IsRequestedForPromotion",user.IsRequestedForPromotion.ToString()}
             };
             return new AuthenticationProperties(data);
         }

@@ -8,81 +8,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace FoodApp.Api.Models
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
-    using System.Configuration;
-
-    /// <summary>
-    ///     The blurb request.
-    /// </summary>
-    public class BlurbRequest
-    {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BlurbRequest" /> class.
-        /// </summary>
-        public BlurbRequest()
-        {
-            this.blurbCount = Convert.ToInt32(ConfigurationManager.AppSettings["BlurbsPerPageCount"]);
-        }
-
-        /// <summary>
-        ///     Gets or sets the category id.
-        /// </summary>
-        [RegularExpression("^[1-9][0-9]*$")]
-        public int? CategoryId { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the page.
-        /// </summary>
-        [Required]
-        [RegularExpression("^[1-9][0-9]*$")]
-        public int Page { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the blurb count.
-        /// </summary>
-        public int blurbCount { get; set; }
-    }
-
-    /// <summary>
-    ///     The connect request.
-    /// </summary>
-    public class ConnectRequest
-    {
-        /// <summary>
-        ///     Gets or sets the provider user id.
-        /// </summary>
-        [Required]
-        public string ProviderUserId { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the access token.
-        /// </summary>
-        [Required]
-        public string AccessToken { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the avathar image url.
-        /// </summary>
-        public string AvatharImageUrl { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the provider user name.
-        /// </summary>
-        [Required]
-        public string ProviderUserName { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the token secret.
-        /// </summary>
-        public string TokenSecret { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the verifier.
-        /// </summary>
-        public string Verifier { get; set; }
-    }
-
 
     /// <summary>
     ///     The Reset Password Request.
@@ -97,47 +23,65 @@ namespace FoodApp.Api.Models
         public string Email { get; set; }
     }
 
-   
-
-    public class BlurbInfo
+    /// <summary>
+    /// The food Request Model
+    /// </summary>
+    public class FoodRequest
     {
         /// <summary>
-        ///     Gets or sets blurbId.
+        /// The latitude
         /// </summary>
         [Required]
-        [RegularExpression("^[1-9][0-9]*$")]
-        public int BlurbId { get; set; }
+        public double Longitude { get; set; }
 
         /// <summary>
-        ///     Gets or sets enterpriseBlurbId.
+        /// The latitude
         /// </summary>
         [Required]
-        [RegularExpression("^[1-9][0-9]*$")]
-        public int EnterpriseBlurbId { get; set; }
+        public double Latitude { get; set; }
 
         /// <summary>
-        ///     Gets or sets blurb title.
+        /// The keyword
         /// </summary>
-        [StringLength(100)]
-        public string Title { get; set; }
+        public string Keyword { get; set; }
 
         /// <summary>
-        ///     Gets or sets blurb Text.
-        /// </summary> 
-        [StringLength(130)]
-        public string Description { get; set; }
-
-        /// <summary>
-        ///     Gets or sets comment.
-        /// </summary>    
-        [StringLength(130)]
-        public string Comment { get; set; }
-
-        /// <summary>
-        ///     Gets or sets time.
+        /// The distance
         /// </summary>
-        public string Time { get; set; }
+        public double? Distance { get; set; } 
+    }
 
+    /// <summary>
+    /// The remove Cart Request
+    /// </summary>
+    public class RemoveCartRequest
+    {
+        /// <summary>
+        /// The CartId
+        /// </summary>
+        [Required]
+        [Range(1,int.MaxValue)]
+        public int CartId { get; set; }
+    }
+
+    /// <summary>
+    /// Add to cart Request
+    /// </summary>
+    public class AddToCartRequest
+    {
+        /// <summary>
+        /// The food Id
+        /// </summary>
+        [Required]
+        [Range(1, int.MaxValue)]
+        public int FoodId { get; set; }
+
+        /// <summary>
+        /// The Quantity
+        /// </summary>
+        [Required]
+        [Range(1, int.MaxValue)]
+        public int Quantity { get; set; }
     }
 
 }
